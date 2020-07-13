@@ -23,4 +23,8 @@
     <ProjectReference Include="..\SuLnu.DataAccess\SuLnu.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\icons\" />
+  </ItemGroup>
+
 </Project>
