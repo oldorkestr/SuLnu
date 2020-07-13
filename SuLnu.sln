@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuLnu", "SuLnu.csproj", "{09812002-63C2-46D6-BFD0-922AF84AEDC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuLnu", "SuLnu.csproj", "{09812002-63C2-46D6-BFD0-922AF84AEDC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuLnu.DataAccess", "..\SuLnu.DataAccess\SuLnu.DataAccess.csproj", "{82FF59B8-E1DC-4F3A-A8F2-7B51BE736B8F}"
 EndProject
