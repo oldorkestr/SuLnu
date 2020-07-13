@@ -17,7 +17,7 @@ Backend - using ASP.NET Core 3.1.
 Database - Microsoft SQL Server.
 
 ## 4. How to start the project locally.
-4.1. Clone or download the project from 
+4.1. Clone or download the project from https://github.com/oldorkestr/SuLnu.git
 
 4.2 Install ASP.NET Core Runtime 3.1.0
 
