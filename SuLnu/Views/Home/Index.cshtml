@@ -1,8 +1,155 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<div>
+    <video autoplay muted loop id="tm-bg">
+        <source src="~/videos/video.mp4" type="video/mp4">
+    </video>
+</div>
+<div id="tm-wrap">
+    <div class="tm-main-content">
+        <div class="container tm-site-header-container">
+            <span class="nav-clic" onclick="openNav()">&#9776;</span>
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-md-col-xl-6 mb-md-0 mb-sm-4 mb-4 tm-site-header-col">
+                    <div class="tm-site-header">
+                        <img src="~/icons/SULNU_Bauhaus_93_WHITE.png" class="img-fluid mb-4">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="content">
+                        <div class="grid">
+                            <div class="grid__item" id="home-link">
+                                <div class="product">
+                                    <div class="tm-nav-link">
+                                        <i class="fa fa-graduation-cap fa-3x tm-nav-icon"></i>
+                                        <span class="tm-nav-text">For Student</span>
+                                        <div class="product__bg"></div>
+                                    </div>
+                                    <div class="product__description">
+                                        <div class="row mb-3">
+                                            <div class="col-12">
+                                                <h2 class="tm-page-title">Welcome to SULNU</h2>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                <img src="~/img/events.png" class="img-fluid mb-4">
+                                                <p><a class="button" href="#">EVENTS</a></p>
+                                                <p>In this section you will see the list of all events.</p>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                <p><a class="button" href="#">NEWS</a></p>
+                                                <p>In this section you will see the list of all news.</p>
+                                                <img src="~/img/news.png" class="img-fluid">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+                            <div class="grid__item" id="team-link">
+                                <div class="product">
+                                    <div class="tm-nav-link">
+                                        <i class="fa fa-id-badge fa-3x tm-nav-icon"></i>
+                                        <span class="tm-nav-text">Qovernment</span>
+                                        <div class="product__bg"></div>
+                                    </div>
+                                    <div class="product__description">
+                                        <div class="p-sm-4 p-2">
+                                            <div class="row mb-3">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                        <img src="~/img/login.png" class="img-fluid mb-4">
+                                                        <p>*This section is only for participants of student government.</p>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                        <div class="container-login" onclick="onclick">
+                                                            <div class="top"></div>
+                                                            <div class="bottom"></div>
+                                                            <div class="center">
+                                                                <input type="email" placeholder="email" />
+                                                                <input type="password" placeholder="password" />
+                                                                <a class="button" href="#">Log in</a>
+                                                                <h2>&nbsp;</h2>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid__item">
+                                <div class="product">
+                                    <div class="tm-nav-link">
+                                        <i class="fa fa-book fa-3x tm-nav-icon"></i>
+                                        <span class="tm-nav-text">About</span>
+                                        <div class="product__bg"></div>
+                                    </div>
+                                    <div class="product__description">
+                                        <div class="p-sm-4 p-2">
+                                            <div class="row mb-3">
+                                                <div class="col-12">
+                                                    <h2 class="tm-page-title">About</h2>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <img src="~/img/documents.png" class="img-fluid mb-4">
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <p><a class="button" href="#">Documents</a></p>
+                                                    <p>In this section you will see the list of all documents.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid__item">
+                                <div class="product">
+                                    <div class="tm-nav-link">
+                                        <i class="fas fa-comments fa-3x tm-nav-icon"></i>
+                                        <span class="tm-nav-text">Contact</span>
+                                        <div class="product__bg"></div>
+                                    </div>
+                                    <div class="product__description">
+                                        <div class="pt-sm-4 pb-sm-4 pl-sm-5 pr-sm-5 pt-2 pb-2 pl-3 pr-3">
+                                            <div class="row mb-3">
+                                                <div class="col-12">
+                                                    <h2 class="tm-page-title">Contact Us</h2>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <form action="index.html" method="post" class="contact-form">
+                                                        <div class="row">
+                                                            <div class="form-group col-md-6 col-lg-6 col-xl-6">
+                                                                <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name" required />
+                                                            </div>
+                                                            <div class="form-group col-md-6 col-lg-6 col-xl-6 tm-col-email">
+                                                                <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <textarea id="contact_message" name="contact_message" class="form-control" rows="9" placeholder="Message" required></textarea>
+                                                        </div>
+                                                        <button type="submit" class="button">Submit</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
