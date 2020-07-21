@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>e0a133f0-c139-4812-bfab-9cfb0df3cfe9</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SuLnu.BLL\SuLnu.BLL.csproj" />
     <ProjectReference Include="..\SuLnu.DataAccess\SuLnu.DataAccess.csproj" />
   </ItemGroup>
 
