@@ -2,6 +2,8 @@
 {
     public interface IRepositoryWrapper
     {
+        IUserRepository User { get; }
+        IEducationRepository Education { get; }
         void Save();
     }
 }
