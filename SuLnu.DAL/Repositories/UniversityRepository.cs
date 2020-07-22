@@ -23,7 +23,7 @@ namespace SuLnu.DAL.Repositories
             return db.Universities;
         }
 
-        public University Get(int id)
+        public University Get(string id)
         {
             return db.Universities.Find(id);
         }
@@ -43,7 +43,7 @@ namespace SuLnu.DAL.Repositories
             return db.Universities.Where(predicate).ToList();
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             University answer = db.Universities.Find(id);
             if (answer != null)
