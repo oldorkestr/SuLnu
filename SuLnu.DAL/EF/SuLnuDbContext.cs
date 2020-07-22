@@ -10,5 +10,6 @@ namespace SuLnu.DAL.EF
             : base(options)
         {
         }
+        public DbSet<University> Universities { get; set; }
     }
 }
