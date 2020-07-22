@@ -20,6 +20,6 @@
 
 3. Install Microsoft SQL Server 2014+
 
-4. Create local database from EPlast.DataAccess migrations.
+4. Create local database from SuLnu.DAL migrations.
 
-(Open Package Manager Console, change default project to "SuLnu.DataAccess" and write "Update-Database")
+(Open Package Manager Console, change default project to "SuLnu.DAL" and write "Update-Database")
