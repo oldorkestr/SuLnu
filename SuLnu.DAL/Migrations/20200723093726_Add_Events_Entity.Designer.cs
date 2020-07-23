@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuLnu.DAL.EF;
 
 namespace SuLnu.DAL.Migrations
 {
     [DbContext(typeof(SuLnuDbContext))]
-    partial class SuLnuDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200723093726_Add_Events_Entity")]
+    partial class Add_Events_Entity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -235,9 +237,6 @@ namespace SuLnu.DAL.Migrations
                     b.Property<string>("DocumentFilePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DocumentType")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FacultyId")
                         .HasColumnType("nvarchar(450)");
 
@@ -289,13 +288,7 @@ namespace SuLnu.DAL.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LogoFilePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -311,42 +304,12 @@ namespace SuLnu.DAL.Migrations
                     b.ToTable("Faculties");
                 });
 
-            modelBuilder.Entity("SuLnu.DAL.Entities.News", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FacultyId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("PhotoFilePath")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tilte")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FacultyId");
-
-                    b.ToTable("News");
-                });
-
             modelBuilder.Entity("SuLnu.DAL.Entities.University", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LogoFilePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -431,13 +394,6 @@ namespace SuLnu.DAL.Migrations
                     b.HasOne("SuLnu.DAL.Entities.University", "University")
                         .WithMany("Faculties")
                         .HasForeignKey("UniversityId");
-                });
-
-            modelBuilder.Entity("SuLnu.DAL.Entities.News", b =>
-                {
-                    b.HasOne("SuLnu.DAL.Entities.Faculty", "Faculty")
-                        .WithMany()
-                        .HasForeignKey("FacultyId");
                 });
 #pragma warning restore 612, 618
         }

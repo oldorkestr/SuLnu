@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace SuLnu.DAL.Entities
@@ -16,5 +17,8 @@ namespace SuLnu.DAL.Entities
         [StringLength(18, MinimumLength = 18,
             ErrorMessage = "Номер телефону повинен містити 10 цифр")]
         public string PhoneNumber { get; set; }
+        public string Description { get; set; }
+        public string LogoFilePath { get; set; }
+        public ICollection<Faculty> Faculties { get; set; }
     }
 }

@@ -28,14 +28,14 @@ namespace SuLnu.DAL.Repositories
             return db.Universities.Find(id);
         }
 
-        public void Create(University answer)
+        public void Create(University university)
         {
-            db.Universities.Add(answer);
+            db.Universities.Add(university);
         }
 
-        public void Update(University answer)
+        public void Update(University university)
         {
-            db.Entry(answer).State = EntityState.Modified;
+            db.Entry(university).State = EntityState.Modified;
         }
 
         public IEnumerable<University> Find(Func<University, Boolean> predicate)
@@ -45,9 +45,9 @@ namespace SuLnu.DAL.Repositories
 
         public void Delete(string id)
         {
-            University answer = db.Universities.Find(id);
-            if (answer != null)
-                db.Universities.Remove(answer);
+            University university = db.Universities.Find(id);
+            if (university != null)
+                db.Universities.Remove(university);
         }
     }
 }
