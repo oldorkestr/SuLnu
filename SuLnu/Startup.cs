@@ -12,6 +12,9 @@ using SuLnu.DAL.EF;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SuLnu.Configs;
+using Microsoft.Extensions.Options;
+using SuLnu.DAL.Entities;
 
 namespace SuLnu
 {
@@ -25,13 +28,21 @@ namespace SuLnu
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
             services.AddDbContext<SuLnuDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("SuLnuDBConnection")));
+
+            services.Configure<AdminConfig>(Configuration.GetSection("AdminConfig"));
+
+            services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<SuLnuDbContext>();
+            services.AddControllersWithViews();
+            services.AddRazorPages();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
+
         {
             if (env.IsDevelopment())
             {
@@ -57,6 +68,35 @@ namespace SuLnu
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            CreateUserRoles(serviceProvider).Wait();
+        }
+        private async Task CreateUserRoles(IServiceProvider serviceProvider)
+        {
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            foreach (var role in new string[] { "ActiveMember", "FacultyMember", "FacultySecretary", "AlternateFacultyAdmin", "FacultyAdmin", "Secretary", "AlternateAdmin", "Admin" })
+            {
+                if (!await roleManager.RoleExistsAsync(role))
+                {
+                    await roleManager.CreateAsync(new IdentityRole(role));
+                }
+            }
+
+            var userManager = serviceProvider.GetRequiredService<UserManager<AppUser>>();
+            var adminConfig = serviceProvider.GetRequiredService<IOptions<AdminConfig>>();
+
+            if (await userManager.FindByEmailAsync(adminConfig.Value.Email) == null)
+            {
+                var admin = new AppUser
+                {
+                    UserName = adminConfig.Value.Email,
+                    Email = adminConfig.Value.Email,
+                    EmailConfirmed = true
+                };
+
+                await userManager.CreateAsync(admin, adminConfig.Value.Password);
+                await userManager.AddToRolesAsync(admin, new string[] { "ActiveMember", "FacultyMember", "FacultySecretary", "AlternateFacultyAdmin", "FacultyAdmin", "Secretary", "AlternateAdmin", "Admin" });
+            }
         }
     }
 }
