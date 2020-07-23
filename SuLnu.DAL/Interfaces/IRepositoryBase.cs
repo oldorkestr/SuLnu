@@ -7,7 +7,7 @@ namespace SuLnu.DAL.Interfaces
     {
         IEnumerable<T> GetAll();
 
-        T Get(int id);
+        T Get(string id);
 
         IEnumerable<T> Find(Func<T, Boolean> predicate);
 
@@ -15,6 +15,6 @@ namespace SuLnu.DAL.Interfaces
 
         void Update(T item);
 
-        void Delete(int id);
+        void Delete(string id);
     }
 }
