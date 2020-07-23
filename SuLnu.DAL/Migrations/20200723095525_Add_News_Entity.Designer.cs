@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuLnu.DAL.EF;
 
 namespace SuLnu.DAL.Migrations
 {
     [DbContext(typeof(SuLnuDbContext))]
-    partial class SuLnuDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200723095525_Add_News_Entity")]
+    partial class Add_News_Entity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

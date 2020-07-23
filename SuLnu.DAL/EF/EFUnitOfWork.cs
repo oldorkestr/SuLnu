@@ -12,7 +12,11 @@ namespace SuLnu.DAL.EF
     {
         private SuLnuDbContext db;
         private UniversityRepository universityRepository;
-        
+        private FacultyRepository facultyRepository;
+        private DocumentRepository documentRepository;
+        private EventRepository eventRepository;
+        private NewsRepository newsRepository;
+
         public EFUnitOfWork(SuLnuDbContext context)
         {
             db = context;
@@ -25,6 +29,46 @@ namespace SuLnu.DAL.EF
                 if (universityRepository == null)
                     universityRepository = new UniversityRepository(db);
                 return universityRepository;
+            }
+        }
+
+        public IRepository<Faculty> Faculties
+        {
+            get
+            {
+                if (facultyRepository == null)
+                    facultyRepository = new FacultyRepository(db);
+                return facultyRepository;
+            }
+        }
+
+        public IRepository<Documnet> Documents
+        {
+            get
+            {
+                if (documentRepository == null)
+                    documentRepository = new DocumentRepository(db);
+                return documentRepository;
+            }
+        }
+
+        public IRepository<Event> Events
+        {
+            get
+            {
+                if (eventRepository == null)
+                    eventRepository = new EventRepository(db);
+                return eventRepository;
+            }
+        }
+
+        public IRepository<News> News
+        {
+            get
+            {
+                if (newsRepository == null)
+                    newsRepository = new NewsRepository(db);
+                return newsRepository;
             }
         }
 
