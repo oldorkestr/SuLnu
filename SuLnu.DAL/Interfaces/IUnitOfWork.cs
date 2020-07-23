@@ -7,7 +7,7 @@ namespace SuLnu.DAL.Interfaces
     {
         IRepository<University> Universities { get; }
         IRepository<Faculty> Faculties { get; }
-        IRepository<Documnet> Documents { get; }
+        IRepository<Document> Documents { get; }
         IRepository<Event> Events { get; }
         IRepository<News> News { get; }
         void Save();

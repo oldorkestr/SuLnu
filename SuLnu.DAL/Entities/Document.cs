@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SuLnu.DAL.Entities
 {
-    public class Documnet
+    public class Document
     {
         [Key]
         public string Id { get; set; }

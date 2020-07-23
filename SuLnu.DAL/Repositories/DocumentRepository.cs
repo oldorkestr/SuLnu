@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace SuLnu.DAL.Repositories
 {
-    class DocumentRepository : IRepository<Documnet>
+    class DocumentRepository : IRepository<Document>
     {
         private SuLnuDbContext db;
 
@@ -18,34 +18,34 @@ namespace SuLnu.DAL.Repositories
             this.db = context;
         }
 
-        public IEnumerable<Documnet> GetAll()
+        public IEnumerable<Document> GetAll()
         {
             return db.Documnets;
         }
 
-        public Documnet Get(string id)
+        public Document Get(string id)
         {
             return db.Documnets.Find(id);
         }
 
-        public void Create(Documnet document)
+        public void Create(Document document)
         {
             db.Documnets.Add(document);
         }
 
-        public void Update(Documnet document)
+        public void Update(Document document)
         {
             db.Entry(document).State = EntityState.Modified;
         }
 
-        public IEnumerable<Documnet> Find(Func<Documnet, Boolean> predicate)
+        public IEnumerable<Document> Find(Func<Document, Boolean> predicate)
         {
             return db.Documnets.Where(predicate).ToList();
         }
 
         public void Delete(string id)
         {
-            Documnet document = db.Documnets.Find(id);
+            Document document = db.Documnets.Find(id);
             if (document != null)
                 db.Documnets.Remove(document);
         }

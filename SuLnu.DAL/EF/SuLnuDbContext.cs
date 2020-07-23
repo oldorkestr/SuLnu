@@ -12,7 +12,7 @@ namespace SuLnu.DAL.EF
         }
         public DbSet<University> Universities { get; set; }
         public DbSet<Faculty> Faculties { get; set; }
-        public DbSet<Documnet> Documnets { get; set; }
+        public DbSet<Document> Documnets { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<News> News { get; set; }
     }

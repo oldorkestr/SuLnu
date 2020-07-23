@@ -42,7 +42,7 @@ namespace SuLnu.DAL.EF
             }
         }
 
-        public IRepository<Documnet> Documents
+        public IRepository<Document> Documents
         {
             get
             {
