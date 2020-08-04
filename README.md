@@ -23,3 +23,6 @@
 4. Create local database from SuLnu.DAL migrations.
 
 (Open Package Manager Console, change default project to "SuLnu.DAL" and write "Update-Database")
+
+## You can see all project documentation on google drive by this link:
+https://drive.google.com/drive/folders/1l2J6ozefF48MzSZDFchy6XpladSmBqQx?usp=sharing
