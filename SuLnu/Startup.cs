@@ -12,7 +12,7 @@ using SuLnu.DAL.EF;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SuLnu.Configs;
+using SuLnu.BLL.Configs;
 using Microsoft.Extensions.Options;
 using SuLnu.DAL.Entities;
 
