@@ -18,6 +18,10 @@ namespace SuLnu.BLL.Services
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IMapper _mapper;
 
+        public SignInService()
+        {
+
+        }
         public SignInService(
             SignInManager<AppUser> signInManager,
             IMapper mapper)

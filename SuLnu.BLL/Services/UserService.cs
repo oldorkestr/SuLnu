@@ -19,6 +19,10 @@ namespace SuLnu.BLL.Services
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
 
+        public UserService()
+        {
+
+        }
         public UserService(
             UserManager<AppUser> userManager,
             IMapper mapper)

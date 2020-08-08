@@ -15,6 +15,10 @@ using Microsoft.Extensions.Hosting;
 using SuLnu.BLL.Configs;
 using Microsoft.Extensions.Options;
 using SuLnu.DAL.Entities;
+using AutoMapper;
+using SuLnu.BLL.Infrastructure;
+using SuLnu.BLL.Interfaces;
+using SuLnu.BLL.Services;
 
 namespace SuLnu
 {
@@ -28,15 +32,21 @@ namespace SuLnu
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<AdminConfig>(Configuration.GetSection("AdminConfig"));
+
             services.AddDbContext<SuLnuDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("SuLnuDBConnection")));
 
-            services.Configure<AdminConfig>(Configuration.GetSection("AdminConfig"));
-
             services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<SuLnuDbContext>();
+
+           
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ISignInService, SignInService>();
+
+            services.AddAutoMapper();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
