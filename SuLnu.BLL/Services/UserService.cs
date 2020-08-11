@@ -41,7 +41,7 @@ namespace SuLnu.BLL.Services
         public async Task<IdentityResult> CreateUserAsync(UserDTO user, string password)
         {
             var applicationUser = _mapper.Map<AppUser>(user);
-
+            applicationUser.UserName = user.Email;
             var existingUser = await _userManager.FindByEmailAsync(user.Email);
             if (existingUser != null && !(await _userManager.IsEmailConfirmedAsync(existingUser)))
             {

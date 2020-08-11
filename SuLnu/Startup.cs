@@ -38,7 +38,12 @@ namespace SuLnu
                 options.UseSqlServer(
                     Configuration.GetConnectionString("SuLnuDBConnection")));
 
-            services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<AppUser>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = true;
+                options.User.AllowedUserNameCharacters =
+                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+ ";
+            })            
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<SuLnuDbContext>();
 

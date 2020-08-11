@@ -12,6 +12,7 @@ using SuLnu.BLL.Interfaces;
 using SuLnu.BLL.DTO;
 using SuLnu.Models;
 using System.Text;
+using System.Text.Encodings.Web;
 
 namespace SuLnu.Controllers
 {
@@ -21,20 +22,23 @@ namespace SuLnu.Controllers
         private readonly ISignInService _signInService;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IEmailSender _emailSender;
 
         public RegisterController(
+            IEmailSender emailSender,
             IUserService userService,
             ISignInService signInService,
             SignInManager<AppUser> signInManager,
             UserManager<AppUser> userManager)
         {
             this._userManager = userManager;
-            this._userService = userService; 
+            this._userService = userService;
+            this._emailSender = emailSender;
             this._signInService = signInService; 
             this._signInManager = signInManager;
         }
 
-        [HttpGet]
+        
         public IActionResult Register()
         {
             return View();
@@ -57,32 +61,32 @@ namespace SuLnu.Controllers
                 var result = await _userService.CreateUserAsync(user, registerInputModel.Password);
                 if (result.Succeeded)
                 {
-                    user = await _userService.GetByEmailAsync(user.Email);
+                    user = await this._userService.GetByEmailAsync(user.Email);
 
-                    //var code = await _userService.GenerateEmailConfirmationTokenAsync(user);
-                    //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    //var callbackUrl = Url.Page(
-                    //    "/Account/ConfirmEmail",
-                    //    pageHandler: null,
-                    //    values: new { area = "Identity", userId = user.Id, code = code },
-                    //    protocol: Request.Scheme);
+                    var code = await this._userService.GenerateEmailConfirmationTokenAsync(user.Id);
+                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                    var callbackUrl = this.Url.Action(
+                         "ConfirmEmail", "Register",
+                         new { userId = user.Id, code = code },
+                         protocol: this.Request.Scheme);
 
-                    //await _emailSender.SendEmailAsync(registerInputModel.Email, "Confirm your email",
-                    //    $"Please confirm your account in askLNU website by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    await this._emailSender.SendEmailAsync(registerInputModel.Email, "Confirm your email",
+                        $"Please confirm your registration at SuLnu website by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                    if (_userService.RequireConfirmedAccount())
+                    if (this._userService.RequireConfirmedAccount())
                     {
-                        return RedirectToAction("Confirmation", new { email = registerInputModel.Email });
+                        return this.RedirectToAction("Confirmation", new { email = registerInputModel.Email });
                     }
                     else
                     {
-                        await _signInService.SignInAsync(user, false);
-                        return RedirectToAction("Register");
+                        await this._signInService.SignInAsync(user, false);
+                        return this.RedirectToAction("Register");
                     }
                 }
+
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    this.ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
 
@@ -93,57 +97,45 @@ namespace SuLnu.Controllers
         {
             if (email == null)
             {
-                return RedirectToAction("Register");
+                return this.RedirectToAction("Index");
             }
 
-            var user = await _userService.GetByEmailAsync(email);
+            var user = await this._userService.GetByEmailAsync(email);
             if (user == null)
             {
-                return NotFound($"Unable to load user with email '{email}'.");
+                return this.NotFound($"Unable to load user with email '{email}'.");
             }
-
-            // Once you add a real email sender, you should remove this code that lets you confirm the account
 
             var viewModel = new RegisterConfirmationViewModel();
 
-            viewModel.DisplayConfirmAccountLink = true;
-            if (viewModel.DisplayConfirmAccountLink)
-            {
-                var code = await _userService.GenerateEmailConfirmationTokenAsync(user.Id);
-                code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+            viewModel.DisplayConfirmAccountLink = false;
 
-                viewModel.EmailConfirmationUrl = Url.Action(
-                    "ConfirmEmail",
-                    "Register",
-                    new { area = "Identity", userId = user.Id, code = code },
-                    Request.Scheme);
-            }
-
-            return View(viewModel);
+            return this.View(viewModel);
         }
 
         public async Task<IActionResult> ConfirmEmail(string userId, string code)
         {
             if (userId == null || code == null)
             {
-                return RedirectToPage("/Register");
+                return this.RedirectToPage("/Index");
             }
 
-            var user = await _userService.GetByIdAsync(userId);
+            var user = await this._userService.GetByIdAsync(userId);
             if (user == null)
             {
-                return NotFound($"Unable to load user with ID '{userId}'.");
+                return this.NotFound($"Unable to load user with ID '{userId}'.");
             }
 
             code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
-            var result = await _userService.ConfirmEmailAsync(userId, code);
+            var result = await this._userService.ConfirmEmailAsync(userId, code);
 
             var viewModel = new ConfirmEmailViewModel
             {
-                StatusMessage = result.Succeeded ? "Thank you for confirming your email." : "Error confirming your email."
+                StatusMessage = result.Succeeded ? "Thank you for confirming your email." : "Error confirming your email.",
+                Succeeded = result.Succeeded,
             };
 
-            return View(viewModel);
+            return this.View(viewModel);
         }
 
     }
