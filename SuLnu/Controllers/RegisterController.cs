@@ -13,6 +13,7 @@ using SuLnu.BLL.DTO;
 using SuLnu.Models;
 using System.Text;
 using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SuLnu.Controllers
 {
@@ -41,12 +42,30 @@ namespace SuLnu.Controllers
         
         public IActionResult Register()
         {
+            var nameFaculties = new SelectList(new List<string>()
+            {
+                  "Applied mathematics and computer science" ,
+                 "Electronics" ,
+                 "Philology" ,
+                 "Mechanics and Mathematics" 
+            });
+
+            this.ViewBag.faculties = nameFaculties;
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterInputModel registerInputModel)
+        public async Task<IActionResult> Register(RegisterInputModel registerInputModel, string faculties)
         {
+            var nameFaculties = new SelectList(new List<string>()
+            {
+                  "Applied mathematics and computer science" ,
+                 "Electronics" ,
+                 "Philology" ,
+                 "Mechanics and Mathematics"
+            });
+
+            this.ViewBag.faculties = nameFaculties;
             if (ModelState.IsValid)
             {
                 var user = new UserDTO
@@ -55,7 +74,7 @@ namespace SuLnu.Controllers
                     FirstName = registerInputModel.FirstName,
                     LastName = registerInputModel.LastName,
                     Course = registerInputModel.Course,
-                    Faculty = registerInputModel.Faculty
+                    Faculty = faculties
                 };
 
                 var result = await _userService.CreateUserAsync(user, registerInputModel.Password);

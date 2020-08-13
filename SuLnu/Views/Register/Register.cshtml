@@ -33,8 +33,8 @@
                 <span asp-validation-for="Course" class="text-danger"></span>
             </div>
             <div class="form-group" style="margin-left: 130px;">
-                <input asp-for="Faculty" class="form-control" placeholder="Faculty" />
                 <span asp-validation-for="Faculty" class="text-danger"></span>
+                @Html.DropDownListFor(m=>m.Faculty, ViewBag.faculties as SelectList)
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>

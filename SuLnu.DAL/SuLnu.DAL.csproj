@@ -7,6 +7,16 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200808171029_FacultyId.cs" />
     <Compile Remove="Migrations\20200808171029_FacultyId.Designer.cs" />
+    <Compile Remove="Migrations\20200813074620_add first elements to db.cs" />
+    <Compile Remove="Migrations\20200813074620_add first elements to db.Designer.cs" />
+    <Compile Remove="Migrations\20200813075255_add first elements to db.cs" />
+    <Compile Remove="Migrations\20200813075255_add first elements to db.Designer.cs" />
+    <Compile Remove="Migrations\20200813075725_add first elements to db.cs" />
+    <Compile Remove="Migrations\20200813075725_add first elements to db.Designer.cs" />
+    <Compile Remove="Migrations\20200813080115_add first elements to db.cs" />
+    <Compile Remove="Migrations\20200813080115_add first elements to db.Designer.cs" />
+    <Compile Remove="Migrations\20200813080504_add first elements.cs" />
+    <Compile Remove="Migrations\20200813080504_add first elements.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
