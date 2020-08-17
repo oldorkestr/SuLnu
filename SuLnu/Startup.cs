@@ -12,9 +12,15 @@ using SuLnu.DAL.EF;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SuLnu.Configs;
+using SuLnu.BLL.Configs;
 using Microsoft.Extensions.Options;
 using SuLnu.DAL.Entities;
+using AutoMapper;
+using SuLnu.BLL.Infrastructure;
+using SuLnu.BLL.Interfaces;
+using SuLnu.BLL.Configs;
+using SuLnu.BLL.Services;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace SuLnu
 {
@@ -28,15 +34,33 @@ namespace SuLnu
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<AdminConfig>(Configuration.GetSection("AdminConfig"));
+            services.Configure<AuthMessageSenderOptions>(this.Configuration);
+            services.Configure<CloudinaryConfig>(this.Configuration.GetSection("CloudinaryConfig"));
+
             services.AddDbContext<SuLnuDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("SuLnuDBConnection")));
 
-            services.Configure<AdminConfig>(Configuration.GetSection("AdminConfig"));
-
-            services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<AppUser>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = true;
+                options.User.AllowedUserNameCharacters =
+                    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+ ";
+            })            
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<SuLnuDbContext>();
+
+           
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ISignInService, SignInService>();
+            services.AddTransient<IEmailSender, EmailSender>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+            });
+            services.AddAutoMapper();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

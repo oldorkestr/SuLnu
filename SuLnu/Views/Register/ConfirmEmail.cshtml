@@ -1,0 +1,41 @@
+﻿@using SuLnu.Models
+@model ConfirmEmailViewModel
+@{
+    ViewData["Title"] = "Account confirmation";
+}
+<style>
+    body {
+        background-color: lightslategray;
+    }
+
+    form {
+        margin-bottom: 16px;
+    }
+
+    section {
+        display: block;
+        overflow: auto;
+        height: 100%;
+        border-radius: 4px;
+        background-color: #f8f9fa;
+        padding: 16px 24px;
+    }
+</style>
+<body>
+    <section>
+        <div class="content">
+            <h1>@ViewData["Title"]</h1>
+
+            @{
+                if (@Model.Succeeded)
+                {
+                    <p class="alert alert-success">@Model.StatusMessage</p>
+                }
+                else
+                {
+                    <p class="alert alert-danger">@Model.StatusMessage</p>
+                }
+            }
+        </div>
+    </section>
+</body>
