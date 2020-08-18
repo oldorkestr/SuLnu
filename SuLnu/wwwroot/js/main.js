@@ -101,8 +101,6 @@
                 opacity: 1
             });
 
-            this.setCarousel();
-
             window.addEventListener("resize", this.setCarousel);
 		}
 		close() {

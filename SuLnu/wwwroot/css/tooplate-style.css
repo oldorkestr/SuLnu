@@ -200,7 +200,10 @@ body {
 
 h1, h2 {
     font-size: 2.8rem;
-    color:white;
+    color: white;
+}
+.Bauhaus-93 {
+    font-family: 'Bauhaus 93';
 }
 
 #tm-bg {
@@ -227,7 +230,7 @@ h1, h2 {
     display: flex;
     align-items: center;
     height: 100%;
-    min-height: 100vh;
+    min-height: 95vh;
 }
 
 p {
@@ -244,7 +247,7 @@ p {
     right: 0;
     top: 0;
     bottom: 0;
-    overflow: auto;
+    overflow-x: hidden;
 }
 
 .tm-site-header-col {
@@ -550,4 +553,60 @@ p:last-child { margin-bottom: 0; }
 
     .fa-3x { font-size: 2.2em; }
 }
+/*User Connected Information*/
+.blanket {
+    width: 100%;
+    background: rgba(44, 12, 88, 0.7);
+    border: 4px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 60px 60px 0px 0px;
+    align-self: flex-end;
+    padding-bottom: 10px;
+    padding-left:20px;
+}
 
+.user-cover {
+    position: fixed;
+    left: 0;
+    right: 0;
+    padding-top: 15%;
+    bottom: 0;
+    overflow-x: hidden;
+}
+
+.profile-image {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin-top: -70px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 4px solid #FFFFFF;
+    box-sizing: border-box;
+}
+.profile-text-center{
+    text-align: center;
+}
+
+.rectangle {
+    width: 90%;
+    height: 230px;
+    margin-top:15px;
+    background: rgba(247, 120, 3, 0.8);
+    border: 4px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 35px;
+}
+
+.rectangle-width{
+    width:100%;
+}
+
+.square {
+    width: 100%;
+    height: 230px;
+    margin-top: 15px;
+    background: rgba(247, 120, 3, 0.8);
+    border: 4px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 35px;
+}
