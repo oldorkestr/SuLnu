@@ -51,11 +51,18 @@ namespace SuLnu.Controllers
             });
 
             this.ViewBag.faculties = nameFaculties;
+
+            var Courses = new SelectList(new List<int>()
+            {
+                  1,2,3,4,5,6
+            });
+
+            this.ViewBag.courses = Courses;
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterInputModel registerInputModel, string faculties)
+        public async Task<IActionResult> Register(RegisterInputModel registerInputModel, string faculties, int course)
         {
             var nameFaculties = new SelectList(new List<string>()
             {
@@ -66,6 +73,13 @@ namespace SuLnu.Controllers
             });
 
             this.ViewBag.faculties = nameFaculties;
+
+            var Courses = new SelectList(new List<int>()
+            {
+                  1,2,3,4,5,6
+            });
+
+            this.ViewBag.courses = Courses;
             if (ModelState.IsValid)
             {
                 var user = new UserDTO
@@ -73,8 +87,7 @@ namespace SuLnu.Controllers
                     Email = registerInputModel.Email,
                     FirstName = registerInputModel.FirstName,
                     LastName = registerInputModel.LastName,
-                    Course = registerInputModel.Course,
-                    Faculty = faculties
+                    Course = registerInputModel.Course
                 };
 
                 var result = await _userService.CreateUserAsync(user, registerInputModel.Password);

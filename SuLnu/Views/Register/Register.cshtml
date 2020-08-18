@@ -2,46 +2,51 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<SuLnu.DAL.Entities.AppUser> SignInManager
 
-<hr />
-<div class="row" style="background-color:blueviolet">
-    <div class="col-md-4">
-        <form asp-action="Register" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <input asp-for="Email" class="form-control" placeholder="Email" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+<div>
+    <video autoplay muted loop id="tm-bg">
+        <source src="~/videos/video.mp4" type="video/mp4">
+    </video>
+</div>
+<div id="tm-wrap">
+    <div class="tm-main-content">
+        <div class="container tm-site-header-container" style=" background: #2c0c58;color: #a9a9a9; width:35%; text-align:center">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <form asp-action="Registration" method="post" enctype="multipart/form-data">
+                        <h1>Register</h1>
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <input asp-for="Email" class="form-control" placeholder="Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Password" class="form-control" placeholder="Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="FirstName" class="form-control" placeholder="Name" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="LastName" class="form-control" placeholder="Surname" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <span asp-validation-for="Course" class="text-danger"></span>
+                            @Html.DropDownListFor(m => m.Course, ViewBag.courses as SelectList)
+                            <span asp-validation-for="Faculty" class="text-danger"></span>
+                            @Html.DropDownListFor(m => m.Faculty, ViewBag.faculties as SelectList)
+                        </div>
+                        <button type="submit" class="button">Register</button>
+                    </form>
+                    @Html.ActionLink("Log in", "Index", "Home")
+                    <h2>&nbsp;</h2>
+                </div>
             </div>
-
-            <div class="form-group">
-                <input asp-for="Password" class="form-control" placeholder="Password" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="FirstName" class="form-control" placeholder="Name" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="LastName" class="form-control" placeholder="Surname" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="Course" class="form-control" placeholder="Course" />
-                <span asp-validation-for="Course" class="text-danger"></span>
-            </div>
-            <div class="form-group" style="margin-left: 130px;">
-                <span asp-validation-for="Faculty" class="text-danger"></span>
-                @Html.DropDownListFor(m=>m.Faculty, ViewBag.faculties as SelectList)
-            </div>
-            <button type="submit" class="btn btn-primary">Register</button>
-        </form>
+        </div>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-

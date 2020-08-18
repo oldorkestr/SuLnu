@@ -17,6 +17,10 @@
     <Compile Remove="Migrations\20200813080115_add first elements to db.Designer.cs" />
     <Compile Remove="Migrations\20200813080504_add first elements.cs" />
     <Compile Remove="Migrations\20200813080504_add first elements.Designer.cs" />
+    <Compile Remove="Migrations\20200818100324_first data to db.cs" />
+    <Compile Remove="Migrations\20200818100324_first data to db.Designer.cs" />
+    <Compile Remove="Migrations\20200818103945_add facultyId to AppUser.cs" />
+    <Compile Remove="Migrations\20200818103945_add facultyId to AppUser.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
