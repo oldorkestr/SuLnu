@@ -37,9 +37,11 @@
                         </div>
                         <div class="form-group">
                             <span asp-validation-for="Course" class="text-danger"></span>
-                            @Html.DropDownListFor(m => m.Course, ViewBag.courses as SelectList)
+                            @Html.DropDownListFor(m => m.Course, ViewBag.courses as SelectList, "Course",new {@class="form-control", @style= "width: auto; padding: 0" })
+                        </div>
+                        <div class="form-group">
                             <span asp-validation-for="Faculty" class="text-danger"></span>
-                            @Html.DropDownListFor(m => m.Faculty, ViewBag.faculties as SelectList)
+                            @Html.DropDownListFor(m => m.Faculty, ViewBag.faculties as SelectList,"Select faculty", new { @class = "form-control",  @style="padding: 0" })
                         </div>
                         <button type="submit" class="button">Register</button>
                     </form>
