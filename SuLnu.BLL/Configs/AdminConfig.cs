@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SuLnu.Configs
+namespace SuLnu.BLL.Configs
 {
     public class AdminConfig
     {
