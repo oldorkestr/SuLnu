@@ -52,7 +52,7 @@ namespace SuLnu.BLL.Services
 
             if (result.Succeeded)
             {
-                await AddUserToRoleAsync(applicationUser, "User");
+                await AddUserToRoleAsync(applicationUser, "ActiveMember");
             }
 
             return result;
