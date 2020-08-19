@@ -21,6 +21,8 @@
     <Compile Remove="Migrations\20200818100324_first data to db.Designer.cs" />
     <Compile Remove="Migrations\20200818103945_add facultyId to AppUser.cs" />
     <Compile Remove="Migrations\20200818103945_add facultyId to AppUser.Designer.cs" />
+    <Compile Remove="Migrations\20200819114019_add CreationDate to News.cs" />
+    <Compile Remove="Migrations\20200819114019_add CreationDate to News.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
