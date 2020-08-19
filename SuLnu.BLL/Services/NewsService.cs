@@ -32,5 +32,22 @@ namespace SuLnu.BLL.Services
         {
             return _mapper.Map<IEnumerable<News>, List<NewsDTO>>(_unitOfWork.News.GetAll());
         }
+
+        public void CreateNews(NewsDTO newsDTO)
+        {
+            if (newsDTO != null)
+            {
+                News news = _mapper.Map<News>(newsDTO);
+                _unitOfWork.News.Create(news);
+                _unitOfWork.Save();
+                //questionDTO.Id = question.Id;
+                //_logger.LogInformation("Created new question.");
+            }
+            else
+            {
+                //_logger.LogWarning("Could not create new question.");
+                throw new ArgumentNullException("questionDTO");
+            }
+        }
     }
 }

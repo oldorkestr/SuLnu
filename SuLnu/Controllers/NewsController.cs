@@ -30,5 +30,41 @@ namespace SuLnu.Controllers
 
             return View(AllNews);
         }
+        public IActionResult CreateNews()
+        {
+            //var viewModel = new NewsViewModel
+            //{
+            //    News = this._newsService.GetAll().ToList(),
+            //};
+
+            return this.View();
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public IActionResult CreateNews(NewsViewModel newsInput)
+        {
+            var newsDTO = new NewsDTO
+            {
+                Tilte = newsInput.Tilte,
+                Description = newsInput.Description,
+                PhotoFilePath = newsInput.PhotoFilePath,
+            };
+
+            this._newsService.CreateNews(newsDTO);
+
+            //if (newsInput.Tilte != null)
+            //{
+            //    foreach (var tag in newsInput.Tags)
+            //    {
+            //        var tagId = this._tagService.FindOrCreate(tag);
+            //        this._questionService.AddTag(questionDTO.Id, tagId);
+            //    }
+            //}
+
+            //this._logger.LogInformation($"Question #{questionDTO.Id} created.");
+
+            return this.RedirectToAction("News", "AllNews");
+        }
     }
 }

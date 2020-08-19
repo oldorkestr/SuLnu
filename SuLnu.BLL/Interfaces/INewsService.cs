@@ -8,5 +8,6 @@ namespace SuLnu.BLL.Interfaces
     public interface INewsService
     {
         public IEnumerable<NewsDTO> GetAll();
+        public void CreateNews(NewsDTO newsDTO);
     }
 }
