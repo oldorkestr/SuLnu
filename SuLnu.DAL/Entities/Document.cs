@@ -7,11 +7,11 @@ namespace SuLnu.DAL.Entities
     public class Document
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public string DocumentFilePath { get; set; }
         public string DocumentType { get; set; }
-        public string FacultyId { get; set; }
+        public int FacultyId { get; set; }
         public Faculty Faculty { get; set; }
     }
 }
