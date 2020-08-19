@@ -163,7 +163,7 @@ namespace SuLnu.Controllers
 
             var viewModel = new ConfirmEmailViewModel
             {
-                StatusMessage = result.Succeeded ? "Thank you for confirming your email." : "Error confirming your email.",
+                StatusMessage = result.Succeeded ? "Thank you for confirming your email" : "Error confirming your email.",
                 Succeeded = result.Succeeded,
             };
 
