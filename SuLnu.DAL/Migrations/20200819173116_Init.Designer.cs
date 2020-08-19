@@ -10,7 +10,7 @@ using SuLnu.DAL.EF;
 namespace SuLnu.DAL.Migrations
 {
     [DbContext(typeof(SuLnuDbContext))]
-    [Migration("20200819170912_Init")]
+    [Migration("20200819173116_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -256,7 +256,7 @@ namespace SuLnu.DAL.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("Documnets");
+                    b.ToTable("Documents");
                 });
 
             modelBuilder.Entity("SuLnu.DAL.Entities.Event", b =>
@@ -431,7 +431,7 @@ namespace SuLnu.DAL.Migrations
             modelBuilder.Entity("SuLnu.DAL.Entities.Document", b =>
                 {
                     b.HasOne("SuLnu.DAL.Entities.Faculty", "Faculty")
-                        .WithMany("Documnets")
+                        .WithMany("Documents")
                         .HasForeignKey("FacultyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

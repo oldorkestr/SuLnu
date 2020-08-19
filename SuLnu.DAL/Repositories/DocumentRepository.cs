@@ -20,17 +20,17 @@ namespace SuLnu.DAL.Repositories
 
         public IEnumerable<Document> GetAll()
         {
-            return db.Documnets;
+            return db.Documents;
         }
 
         public Document Get(string id)
         {
-            return db.Documnets.Find(id);
+            return db.Documents.Find(id);
         }
 
         public void Create(Document document)
         {
-            db.Documnets.Add(document);
+            db.Documents.Add(document);
         }
 
         public void Update(Document document)
@@ -40,14 +40,14 @@ namespace SuLnu.DAL.Repositories
 
         public IEnumerable<Document> Find(Func<Document, Boolean> predicate)
         {
-            return db.Documnets.Where(predicate).ToList();
+            return db.Documents.Where(predicate).ToList();
         }
 
         public void Delete(string id)
         {
-            Document document = db.Documnets.Find(id);
+            Document document = db.Documents.Find(id);
             if (document != null)
-                db.Documnets.Remove(document);
+                db.Documents.Remove(document);
         }
     }
 }

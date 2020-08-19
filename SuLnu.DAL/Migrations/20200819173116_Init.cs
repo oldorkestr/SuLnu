@@ -197,7 +197,7 @@ namespace SuLnu.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Documnets",
+                name: "Documents",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -209,9 +209,9 @@ namespace SuLnu.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Documnets", x => x.Id);
+                    table.PrimaryKey("PK_Documents", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Documnets_Faculties_FacultyId",
+                        name: "FK_Documents_Faculties_FacultyId",
                         column: x => x.FacultyId,
                         principalTable: "Faculties",
                         principalColumn: "Id",
@@ -305,8 +305,8 @@ namespace SuLnu.DAL.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Documnets_FacultyId",
-                table: "Documnets",
+                name: "IX_Documents_FacultyId",
+                table: "Documents",
                 column: "FacultyId");
 
             migrationBuilder.CreateIndex(
@@ -343,7 +343,7 @@ namespace SuLnu.DAL.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Documnets");
+                name: "Documents");
 
             migrationBuilder.DropTable(
                 name: "Events");

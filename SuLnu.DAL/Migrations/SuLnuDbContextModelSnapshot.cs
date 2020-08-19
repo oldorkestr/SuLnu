@@ -254,7 +254,7 @@ namespace SuLnu.DAL.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("Documnets");
+                    b.ToTable("Documents");
                 });
 
             modelBuilder.Entity("SuLnu.DAL.Entities.Event", b =>
@@ -429,7 +429,7 @@ namespace SuLnu.DAL.Migrations
             modelBuilder.Entity("SuLnu.DAL.Entities.Document", b =>
                 {
                     b.HasOne("SuLnu.DAL.Entities.Faculty", "Faculty")
-                        .WithMany("Documnets")
+                        .WithMany("Documents")
                         .HasForeignKey("FacultyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

@@ -18,6 +18,6 @@ namespace SuLnu.DAL.Entities
         public string LogoFilePath { get; set; }
         public int UniversityId { get; set; }
         public University University { get; set; }
-        public ICollection<Document> Documnets { get; set; }
+        public ICollection<Document> Documents { get; set; }
     }
 }
