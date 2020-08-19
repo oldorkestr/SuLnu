@@ -21,6 +21,7 @@ using SuLnu.BLL.Interfaces;
 using SuLnu.BLL.Configs;
 using SuLnu.BLL.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using SuLnu.DAL.Interfaces;
 
 namespace SuLnu
 {
@@ -51,10 +52,12 @@ namespace SuLnu
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<SuLnuDbContext>();
 
-           
+            services.AddTransient<IUnitOfWork, EFUnitOfWork>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ISignInService, SignInService>();
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<INewsService, NewsService>();
+
 
             services.Configure<IdentityOptions>(options =>
             {

@@ -28,6 +28,8 @@ namespace SuLnu.BLL.Infrastructure
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new UserProfile());
+                mc.AddProfile(new NewsProfile());
+
             });
 
             var mapper = mappingConfig.CreateMapper();
