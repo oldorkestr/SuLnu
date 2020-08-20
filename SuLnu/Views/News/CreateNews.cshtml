@@ -3,39 +3,41 @@
 @{
     ViewData["Title"] = "CreateNews";
 }
-
-<h1>CreateNews</h1>
-
-<h4>NewsViewModel</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CreateNews">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Tilte" class="control-label"></label>
-                <input asp-for="Tilte" class="form-control" />
-                <span asp-validation-for="Tilte" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhotoFilePath" class="control-label"></label>
-                <input asp-for="PhotoFilePath" class="form-control" />
-                <span asp-validation-for="PhotoFilePath" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
 <div>
-    <a asp-action="Index">Back to List</a>
+    <video autoplay muted loop id="tm-bg">
+        <source src="~/videos/video.mp4" type="video/mp4">
+    </video>
+</div>
+<div id="tm-wrap">
+    <div class="tm-main-content">
+        <div class="container tm-site-header-container" style=" background: #2c0c58;color: #a9a9a9; width:35%; text-align:center; ">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <h1>Create news</h1>
+                    <form asp-action="CreateNews">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <input asp-for="Tilte" class="form-control" placeholder="Title"/>
+                            <span asp-validation-for="Tilte" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="Description" class="form-control" placeholder="Description"/>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input asp-for="PhotoFilePath" class="form-control" placeholder="Choose photo"/>
+                            <span asp-validation-for="PhotoFilePath" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    </form>
+                    <a asp-action="AllNews">Back to List</a>
+                    <h2>&nbsp;</h2>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section Scripts {
