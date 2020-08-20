@@ -12,6 +12,7 @@ namespace SuLnu.Models
         public string Tilte { get; set; }
         public string Description { get; set; }
         public string PhotoFilePath { get; set; }
+        public string FacultyName { get; set; }
         public List<NewsDTO> News { get; internal set; }
     }
 }
