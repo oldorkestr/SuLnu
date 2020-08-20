@@ -7,7 +7,7 @@ namespace SuLnu.DAL.Entities
     public class University
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         
         [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", 

@@ -97,10 +97,12 @@ namespace SuLnu.DAL.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -137,10 +139,12 @@ namespace SuLnu.DAL.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(128)")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -227,10 +231,12 @@ namespace SuLnu.DAL.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("SuLnu.DAL.Entities.Documnet", b =>
+            modelBuilder.Entity("SuLnu.DAL.Entities.Document", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("DocumentFilePath")
                         .HasColumnType("nvarchar(max)");
@@ -238,8 +244,8 @@ namespace SuLnu.DAL.Migrations
                     b.Property<string>("DocumentType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FacultyId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("FacultyId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -248,13 +254,15 @@ namespace SuLnu.DAL.Migrations
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("Documnets");
+                    b.ToTable("Documents");
                 });
 
             modelBuilder.Entity("SuLnu.DAL.Entities.Event", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -262,8 +270,8 @@ namespace SuLnu.DAL.Migrations
                     b.Property<string>("EventType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FacultyId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("FacultyId")
+                        .HasColumnType("int");
 
                     b.Property<string>("FormOfHolding")
                         .HasColumnType("nvarchar(max)");
@@ -286,8 +294,10 @@ namespace SuLnu.DAL.Migrations
 
             modelBuilder.Entity("SuLnu.DAL.Entities.Faculty", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -301,8 +311,8 @@ namespace SuLnu.DAL.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UniversityId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UniversityId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -313,14 +323,16 @@ namespace SuLnu.DAL.Migrations
 
             modelBuilder.Entity("SuLnu.DAL.Entities.News", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FacultyId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("FacultyId")
+                        .HasColumnType("int");
 
                     b.Property<string>("PhotoFilePath")
                         .HasColumnType("nvarchar(max)");
@@ -337,8 +349,10 @@ namespace SuLnu.DAL.Migrations
 
             modelBuilder.Entity("SuLnu.DAL.Entities.University", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -412,32 +426,40 @@ namespace SuLnu.DAL.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SuLnu.DAL.Entities.Documnet", b =>
+            modelBuilder.Entity("SuLnu.DAL.Entities.Document", b =>
                 {
                     b.HasOne("SuLnu.DAL.Entities.Faculty", "Faculty")
-                        .WithMany("Documnets")
-                        .HasForeignKey("FacultyId");
+                        .WithMany("Documents")
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SuLnu.DAL.Entities.Event", b =>
                 {
                     b.HasOne("SuLnu.DAL.Entities.Faculty", "Faculty")
                         .WithMany()
-                        .HasForeignKey("FacultyId");
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SuLnu.DAL.Entities.Faculty", b =>
                 {
                     b.HasOne("SuLnu.DAL.Entities.University", "University")
                         .WithMany("Faculties")
-                        .HasForeignKey("UniversityId");
+                        .HasForeignKey("UniversityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SuLnu.DAL.Entities.News", b =>
                 {
                     b.HasOne("SuLnu.DAL.Entities.Faculty", "Faculty")
                         .WithMany()
-                        .HasForeignKey("FacultyId");
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

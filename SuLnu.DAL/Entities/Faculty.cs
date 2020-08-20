@@ -8,7 +8,7 @@ namespace SuLnu.DAL.Entities
     public class Faculty
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
         [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$",
@@ -16,8 +16,8 @@ namespace SuLnu.DAL.Entities
         public string Email { get; set; }
         public string Description { get; set; }
         public string LogoFilePath { get; set; }
-        public string UniversityId { get; set; }
+        public int UniversityId { get; set; }
         public University University { get; set; }
-        public ICollection<Document> Documnets { get; set; }
+        public ICollection<Document> Documents { get; set; }
     }
 }
