@@ -15,20 +15,24 @@ namespace SuLnu.DAL.EF
         public DbSet<Document> Documents { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<News> News { get; set; }
-        //protected override void OnModelCreating(ModelBuilder builder)
-        //{
-        //    builder.Entity<Faculty>().HasData(
-        //        new Faculty[]
-        //        {
-        //            new Faculty {Id="a", Name = "Applied mathematics and computer science" },
-        //            new Faculty {Id="b", Name = "Electronics" },
-        //            new Faculty { Id="c", Name = "Philology" },
-        //            new Faculty {  Id="d", Name = "Mechanics and Mathematics" }
-        //        }
-
-        //    );
-
-        //    base.OnModelCreating(builder);
-        //}
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<University>().HasData(
+               new University[]
+               {
+                    new University {Id=1, Name = "LNU" },
+               }
+           );
+            builder.Entity<Faculty>().HasData(
+                new Faculty[]
+                {
+                       new Faculty {Id=1, Name = "Applied mathematics and computer science", UniversityId=1 },
+                       new Faculty {Id=2, Name = "Electronics" ,UniversityId=1},
+                       new Faculty { Id=3, Name = "Philology",UniversityId=1 },
+                       new Faculty {  Id=4, Name = "Mechanics and Mathematics",UniversityId=1 }
+                }
+            );
+            base.OnModelCreating(builder);
+        }
     }
 }

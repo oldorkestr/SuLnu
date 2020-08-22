@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuLnu.DAL.EF;
 
 namespace SuLnu.DAL.Migrations
 {
     [DbContext(typeof(SuLnuDbContext))]
-    partial class SuLnuDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200820132749_add init data")]
+    partial class addinitdata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -319,32 +321,6 @@ namespace SuLnu.DAL.Migrations
                     b.HasIndex("UniversityId");
 
                     b.ToTable("Faculties");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Applied mathematics and computer science",
-                            UniversityId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Electronics",
-                            UniversityId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Philology",
-                            UniversityId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Mechanics and Mathematics",
-                            UniversityId = 1
-                        });
                 });
 
             modelBuilder.Entity("SuLnu.DAL.Entities.News", b =>

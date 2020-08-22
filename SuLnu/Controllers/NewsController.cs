@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SuLnu.BLL.DTO;
 using SuLnu.BLL.Interfaces;
 using SuLnu.BLL.Services;
@@ -14,11 +15,13 @@ namespace SuLnu.Controllers
     public class NewsController : Controller
     {
         private readonly INewsService _newsService;
+        private readonly IFacultyService _facultyService;
         private Mapper _mapper;
 
-        public NewsController(INewsService newsService)
+        public NewsController(INewsService newsService, IFacultyService facultyService)
         {
             _newsService = newsService;
+            _facultyService = facultyService;
             var config = new MapperConfiguration(cfg => cfg.CreateMap<NewsDTO, NewsViewModel>());
             this._mapper = new Mapper(config);
         }
@@ -32,11 +35,8 @@ namespace SuLnu.Controllers
         }
         public IActionResult CreateNews()
         {
-            //var viewModel = new NewsViewModel
-            //{
-            //    News = this._newsService.GetAll().ToList(),
-            //};
-
+            var nameFaculties = new SelectList(_facultyService.GetAllFacultiesNames().ToList());
+            this.ViewBag.faculties = nameFaculties;
             return this.View();
         }
 
@@ -44,11 +44,15 @@ namespace SuLnu.Controllers
         //[ValidateAntiForgeryToken]
         public IActionResult CreateNews(NewsViewModel newsInput)
         {
+            var nameFaculties = new SelectList(_facultyService.GetAllFacultiesNames().ToList());
+            this.ViewBag.faculties = nameFaculties;
+            var facultyId = _facultyService.GetFacultyIdByName(newsInput.FacultyName);
             var newsDTO = new NewsDTO
             {
                 Tilte = newsInput.Tilte,
                 Description = newsInput.Description,
                 PhotoFilePath = newsInput.PhotoFilePath,
+                FacultyId = facultyId
             };
 
             this._newsService.CreateNews(newsDTO);

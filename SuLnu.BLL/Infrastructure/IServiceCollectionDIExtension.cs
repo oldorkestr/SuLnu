@@ -29,6 +29,7 @@ namespace SuLnu.BLL.Infrastructure
             {
                 mc.AddProfile(new UserProfile());
                 mc.AddProfile(new NewsProfile());
+                mc.AddProfile(new FacultyProfile());
 
             });
 

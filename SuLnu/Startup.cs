@@ -18,7 +18,6 @@ using SuLnu.DAL.Entities;
 using AutoMapper;
 using SuLnu.BLL.Infrastructure;
 using SuLnu.BLL.Interfaces;
-using SuLnu.BLL.Configs;
 using SuLnu.BLL.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using SuLnu.DAL.Interfaces;
@@ -57,6 +56,7 @@ namespace SuLnu
             services.AddTransient<ISignInService, SignInService>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<INewsService, NewsService>();
+            services.AddTransient<IFacultyService, FacultyService>();
 
 
             services.Configure<IdentityOptions>(options =>
