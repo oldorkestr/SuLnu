@@ -68,7 +68,7 @@ namespace SuLnu.Controllers
 
             //this._logger.LogInformation($"Question #{questionDTO.Id} created.");
 
-            return this.RedirectToAction("News", "AllNews");
+            return this.RedirectToAction("AllNews", "News");
         }
     }
 }
