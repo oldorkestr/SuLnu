@@ -7,7 +7,7 @@ namespace SuLnu.DAL.Interfaces
     {
         IEnumerable<T> GetAll();
 
-        T Get(string id);
+        T Get(int id);
 
         IEnumerable<T> Find(Func<T, Boolean> predicate);
 

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using SuLnu.BLL.DTO;
 using SuLnu.BLL.Interfaces;
@@ -6,7 +7,9 @@ using SuLnu.DAL.Entities;
 using SuLnu.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SuLnu.BLL.Services
 {
@@ -48,6 +51,13 @@ namespace SuLnu.BLL.Services
                 //_logger.LogWarning("Could not create new question.");
                 throw new ArgumentNullException("questionDTO");
             }
+        }
+        public void UpdateImage(int newsId, string imageSrc)
+        {
+            var news = _unitOfWork.News.Get(newsId);
+            news.PhotoFilePath = imageSrc;
+            _unitOfWork.News.Update(news);
+            _unitOfWork.Save();
         }
     }
 }

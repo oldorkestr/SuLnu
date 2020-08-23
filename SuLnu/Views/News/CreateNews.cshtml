@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <h1>Create news</h1>
-                    <form asp-action="CreateNews">
+                    <form asp-action="CreateNews" enctype="multipart/form-data">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
                             <label asp-for="Tilte" class="control-label"></label>
@@ -26,10 +26,9 @@
                             <input asp-for="Description" class="form-control" />
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="PhotoFilePath" class="control-label"></label>
-                            <input asp-for="PhotoFilePath" class="form-control" />
-                            <span asp-validation-for="PhotoFilePath" class="text-danger"></span>
+                        <div class="form-group" style="margin-left: 130px;">
+                            <input asp-for="Image" class="form-control-file" placeholder="Image" />
+                            <span asp-validation-for="Image" class="text-danger"></span>
                         </div>
                         <div class="form-group">
                             <span asp-validation-for="FacultyName" class="text-danger"></span>
