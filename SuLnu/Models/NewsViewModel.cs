@@ -14,5 +14,7 @@ namespace SuLnu.Models
         public string Description { get; set; }
         public string FacultyName { get; set; }
         public IFormFile Image { get; set; }
+        public DateTime CreationDate { get; set; }
+
     }
 }

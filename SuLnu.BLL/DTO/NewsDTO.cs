@@ -7,19 +7,21 @@ namespace SuLnu.BLL.DTO
     public class NewsDTO
     {
         public NewsDTO() { }
-        public NewsDTO(string id, string tilte, string description, string photoFilePath, int facultyId)
+        public NewsDTO(string id, string tilte, string description, string photoFilePath, int facultyId, DateTime date)
         {
             Id = id;
             Tilte = tilte;
             Description = description;
             PhotoFilePath = photoFilePath;
             FacultyId = facultyId;
+            CreationDate = date;
         }
 
         public string Id { get; set; }
         public string Tilte { get; set; }
         public string Description { get; set; }
         public string PhotoFilePath { get; set; }
+        public DateTime CreationDate { get; set; }
         public int FacultyId { get; set; }
     }
 }

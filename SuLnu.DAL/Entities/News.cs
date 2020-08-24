@@ -12,6 +12,7 @@ namespace SuLnu.DAL.Entities
         public string Description { get; set; }
         public string PhotoFilePath { get; set; }
         public int FacultyId { get; set; }
+        public DateTime CreationDate { get; set; }
         public Faculty Faculty { get; set; }
     }
 }

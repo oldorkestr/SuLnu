@@ -1,42 +1,47 @@
 ﻿@model IEnumerable<SuLnu.Models.NewsShortViewModel>
-
 @{
-    ViewData["Title"] = "AllNews";
+    ViewData["Title"] = "News";
 }
-
 <style>
-    th, td {
+    th, td, p, h3 {
         color: black
     }
-</style>
-<h1>AllNews</h1>
 
-<p>
-    <a asp-action="CreateNews">Add News</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Tilte)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhotoFilePath)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tilte)
-                </td>
-                <td>
-                    <img src="@item.PhotoFilePath" style="width:100px; height:60px">
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    .container {
+        max-width: 1800px;
+        text-align: center
+    }
+
+    body {
+        background-color: #fffaeb;
+    }
+</style>
+<body>
+    <p>
+        <a asp-action="CreateNews">Create News</a>
+    </p>
+    <div class="container ">
+        <div class="row">
+            @{
+                int count = 1;
+            }
+            @foreach (var item in Model)
+            {
+                var numb = 4;
+                if (count % 3 == 0)
+                {
+                    numb = 3;
+                }
+                <div class="col-@numb m-1" style="background-color:white">
+                    <img src="@item.PhotoFilePath" style="width:inherit; height:inherit">
+                    <h3 class="font-weight-bold align-self-lg-center">@Html.DisplayFor(modelItem => item.Tilte)</h3>
+                    @{
+                        var date = item.CreationDate;
+                    }
+                    <p class="font-weight-light" style="font-size:13px">@date.ToString("MMMM") @date.Day, @date.Year</p>
+                </div>
+                count+=1;
+            }
+        </div>
+    </div>
+</body>

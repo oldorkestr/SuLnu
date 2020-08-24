@@ -47,21 +47,22 @@ namespace SuLnu.Controllers
         {
             var nameFaculties = new SelectList(_facultyService.GetAllFacultiesNames().ToList());
             this.ViewBag.faculties = nameFaculties;
+
             var facultyId = _facultyService.GetFacultyIdByName(newsInput.FacultyName);
-            var newsId = 2;
             string image = "";
             if (newsInput.Image != null)
             {
                 var imageSrc = await this._imageService.SaveImage(newsInput.Image);
                 image = imageSrc;
-                this._newsService.UpdateImage(newsId, imageSrc);
             }
+
             var newsDTO = new NewsDTO
             {
                 Tilte = newsInput.Tilte,
                 Description = newsInput.Description,
                 FacultyId = facultyId,
-                PhotoFilePath= image
+                PhotoFilePath= image,
+                CreationDate=DateTime.Now
             };
            
             this._newsService.CreateNews(newsDTO);

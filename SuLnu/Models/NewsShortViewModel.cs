@@ -12,6 +12,7 @@ namespace SuLnu.Models
     {
         public string Tilte { get; set; }
         //public string FacultyName { get; set; }
+        public DateTime CreationDate { get; set; }
         public string PhotoFilePath { get; set; }
     }
 }
