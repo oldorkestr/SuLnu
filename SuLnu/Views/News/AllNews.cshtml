@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SuLnu.Models.NewsShortViewModel>
+﻿@model SuLnu.Models.PagedViewModel
+
 @{
     ViewData["Title"] = "News";
 }
@@ -6,15 +7,48 @@
     th, td, p, h3 {
         color: black
     }
-
+    /*h3 {
+        font-family: "Montserrat"
+    }*/
     .container {
         max-width: 1800px;
         text-align: center
     }
 
     body {
-        background-color: #fffaeb;
+        background-color: #ffffff;
     }
+
+    .pagination {
+        display: inline-block;
+    }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+            .pagination a.active {
+                background-color: #2c0c58;
+                color: white;
+                border-radius: 5px;
+            }
+
+            .pagination a:hover:not(.active) {
+                background-color: #8763ba;
+                border-radius: 5px;
+            }
+    .news {
+        box-shadow: 0 0 3px gray;
+        transition: transform 1s;
+    }
+        .news:hover {
+            -ms-transform: scale(1.2); /* IE 9 */
+            -webkit-transform: scale(1.2); /* Safari 3-8 */
+            transform: scale(1.1);
+        }
 </style>
 <body>
     <p>
@@ -25,14 +59,14 @@
             @{
                 int count = 1;
             }
-            @foreach (var item in Model)
+            @foreach (var item in Model.News)
             {
                 var numb = 4;
                 if (count % 3 == 0)
                 {
                     numb = 3;
                 }
-                <div class="col-@numb m-1" style="background-color:white">
+                <div class="col-@numb m-3 my-3 news" style="background-color:white">
                     <img src="@item.PhotoFilePath" style="width:inherit; height:inherit">
                     <h3 class="font-weight-bold align-self-lg-center">@Html.DisplayFor(modelItem => item.Tilte)</h3>
                     @{
@@ -40,8 +74,29 @@
                     }
                     <p class="font-weight-light" style="font-size:13px">@date.ToString("MMMM") @date.Day, @date.Year</p>
                 </div>
-                count+=1;
+                count += 1;
             }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <div class="pagination">
+                @using (Html.BeginForm("AllNews", "News", FormMethod.Post))
+                {
+                    @for (int i = 1; i <= Model.PageCount; i++)
+                    {
+                        @if (i != Model.CurrentPageIndex)
+                        {
+                            @Html.ActionLink($"{i}", "AllNews", "News", new { page = i })
+                        }
+                        else
+                        {
+                            <a class="active">@i</a>
+                        }
+                    }
+                }
+                <h2>&nbsp;</h2>
+            </div>
         </div>
     </div>
 </body>

@@ -28,11 +28,16 @@ namespace SuLnu.Controllers
             this._imageService = imageService;
         }
 
-        public IActionResult AllNews()
+        public IActionResult AllNews(int page=1)
         {
             var AllNewsDTO = _newsService.GetAll();
             var AllNews = _mapper.Map<IEnumerable<NewsShortViewModel>>(AllNewsDTO);
-            return View(AllNews);
+
+            int maxRows = 6;
+            var newsPerPages = AllNews.Skip((page - 1) * maxRows).Take(maxRows);
+            double pageCount = (int)Math.Ceiling((decimal)AllNews.Count() / maxRows);
+            PagedViewModel pagedQuestions = new PagedViewModel { PageCount = (int)Math.Ceiling(pageCount), CurrentPageIndex = page, News = newsPerPages };
+            return View(pagedQuestions);
         }
         public IActionResult CreateNews()
         {
