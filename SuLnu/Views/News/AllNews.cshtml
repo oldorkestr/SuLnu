@@ -3,42 +3,6 @@
 @{
     ViewData["Title"] = "News";
 }
-<style>
-    .likes {
-        background-color: #f6f6f6;
-        height: 40px;
-        line-height: 40px;
-        /*position: absolute;*/
-        /*bottom: 20px;*/
-        float: right;
-        padding: 0 17px;
-        border-radius: 100px;
-        transition: .3s all ease-in-out;
-        font-size: 14px;
-        font-weight: lighter;
-        margin-right: 30px;
-    }
-
-        .likes p {
-            display: flex;
-            flex-direction: row;
-        }
-            .likes p:before,
-            .likes p:after {
-                content: "";
-                flex: 1 1;
-                border-bottom: 2px solid #000;
-                margin: auto;
-            }
-    .faculty {
-        float: left;
-        margin-left: 40px;
-    }
-
-    .date {
-        font-size: 13px;
-    }
-</style>
 <html>
 <head>
     <link rel="stylesheet" href="~/css/allNews.css" />
@@ -59,7 +23,7 @@
                 {
                     numb = 3;
                 }
-                <div class="col-lg-@numb col-md-6 col-sm-12 my-3 m-3 news" style="background-color:white">
+                <div class="col-lg-@numb col-md-6 col-sm-6 col-12 my-3 m-3 news" style="background-color:white">
                     <img src="@item.PhotoFilePath" style="width:inherit; height:inherit">
                     @{
                         var date = item.CreationDate;
