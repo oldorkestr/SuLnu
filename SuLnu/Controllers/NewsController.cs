@@ -32,6 +32,10 @@ namespace SuLnu.Controllers
         {
             var AllNewsDTO = _newsService.GetAll();
             var AllNews = _mapper.Map<IEnumerable<NewsShortViewModel>>(AllNewsDTO);
+            foreach (var news in AllNews)
+            {
+                news.FacultyName = _facultyService.GetFacultyNameById(news.FacultyId);
+            }
 
             int maxRows = 6;
             var newsPerPages = AllNews.Skip((page - 1) * maxRows).Take(maxRows);

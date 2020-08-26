@@ -11,7 +11,9 @@ namespace SuLnu.Models
     public class NewsShortViewModel
     {
         public string Tilte { get; set; }
-        //public string FacultyName { get; set; }
+        public int FacultyId { get; set; }
+        public int NumberOflikes { get; set; }
+        public string FacultyName { get; set; }
         public DateTime CreationDate { get; set; }
         public string PhotoFilePath { get; set; }
     }

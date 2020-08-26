@@ -9,5 +9,6 @@ namespace SuLnu.BLL.Interfaces
     {
         public IEnumerable<string> GetAllFacultiesNames();
         public int GetFacultyIdByName(string FacultyName);
+        public string GetFacultyNameById(int facultyId);
     }
 }

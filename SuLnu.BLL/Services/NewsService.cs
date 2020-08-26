@@ -59,5 +59,6 @@ namespace SuLnu.BLL.Services
             _unitOfWork.News.Update(news);
             _unitOfWork.Save();
         }
+
     }
 }
