@@ -39,10 +39,14 @@ body {
         }
 
 .news {
-    /*box-shadow: 0 0 3px gray;*/
     box-shadow: 0px 15px 45px -9px rgba(0,0,0,.2);
     transition: transform 1s;
     padding: 0;
+    background-color: white;
+    border-radius:15px;
+}
+img {
+    border-radius: 15px 15px 0 0;
 }
 
     .news:hover {
@@ -103,7 +107,8 @@ body {
 }
 
 @media only screen and (min-width:576px) {
+    
     .col-sm-12 {
-        flex: inherit;
+        flex: inherit !important;
     }
 }
