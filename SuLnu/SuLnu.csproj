@@ -35,4 +35,8 @@
     <Folder Include="wwwroot\icons\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Event\AllEvents.cshtml" />
+  </ItemGroup>
+
 </Project>
