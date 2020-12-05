@@ -338,3 +338,8 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+SuLnu/Controllers/LoginController.cs
+SuLnu/Controllers/NewsController.cs
+SuLnu/Controllers/RegisterController.cs
+SuLnu/Views/News/AllNews.cshtml
+SuLnu/Views/Shared/_LoginPartial.cshtml

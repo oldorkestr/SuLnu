@@ -1,4 +1,5 @@
-﻿namespace SuLnu.Controllers
+﻿// ReSharper disable Mvc.ViewNotResolved
+namespace SuLnu.Controllers
 {
     using System;
     using System.Collections.Generic;

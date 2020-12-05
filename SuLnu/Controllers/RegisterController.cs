@@ -129,6 +129,7 @@ namespace SuLnu.Controllers
         {
             if (email == null)
             {
+                // ReSharper disable once Mvc.ActionNotResolved
                 return this.RedirectToAction("Index");
             }
 
