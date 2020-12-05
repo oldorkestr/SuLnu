@@ -9,8 +9,6 @@ using SuLnu.BLL.DTO;
 using SuLnu.BLL.Interfaces;
 using SuLnu.BLL.Services;
 using SuLnu.Models;
-// ReSharper disable Mvc.ControllerNotResolved
-// ReSharper disable Mvc.ActionNotResolved
 
 namespace SuLnu.Controllers
 {
