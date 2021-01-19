@@ -23,7 +23,7 @@ namespace SuLnu.DAL.Repositories
             return db.Faculties;
         }
 
-        public Faculty Get(string id)
+        public Faculty Get(int id)
         {
             return db.Faculties.Find(id);
         }

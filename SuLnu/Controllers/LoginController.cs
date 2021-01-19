@@ -49,7 +49,7 @@
                 if (result.Succeeded)
                 {
                     this._logger.LogInformation("User logged in.");
-                    return this.RedirectToAction("Index", "Home");
+                    return this.RedirectToAction("AllNews", "News");
                 }
 
                 if (result.IsLockedOut)
@@ -60,11 +60,11 @@
                 else
                 {
                     this.ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return this.View("Index");
+                    return this.RedirectToAction("Index", "Home");
                 }
             }
 
-            return this.View("Index");
+            return this.RedirectToAction("AllNews", "News");
         }
     }
 }
