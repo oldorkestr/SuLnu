@@ -14,28 +14,33 @@
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <h1>Create news</h1>
-                    <form asp-action="CreateNews">
+                    <form asp-action="CreateNews" enctype="multipart/form-data">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
-                            <input asp-for="Tilte" class="form-control" placeholder="Title"/>
+                            <label asp-for="Tilte" class="control-label"></label>
+                            <input asp-for="Tilte" class="form-control" />
                             <span asp-validation-for="Tilte" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <input asp-for="Description" class="form-control" placeholder="Description"/>
+                            <label asp-for="Description" class="control-label"></label>
+                            <input asp-for="Description" class="form-control" />
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
-                            <input asp-for="PhotoFilePath" class="form-control" placeholder="Choose photo"/>
-                            <span asp-validation-for="PhotoFilePath" class="text-danger"></span>
+                        <div class="form-group" style="margin-left: 130px;">
+                            <input asp-for="Image" class="form-control-file" placeholder="Image" />
+                            <span asp-validation-for="Image" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Create" class="btn btn-primary" />
+                            <span asp-validation-for="FacultyName" class="text-danger"></span>
+                            @Html.DropDownListFor(m => m.FacultyName, ViewBag.faculties as SelectList, "Faculty", new { @class = "form-control", @style = "width: auto; padding: 0" })
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="button" />
                         </div>
                     </form>
                     <a asp-action="AllNews">Back to List</a>
                     <h2>&nbsp;</h2>
                 </div>
-
 
 <h1>CreateNews</h1>
 

@@ -37,6 +37,8 @@ namespace SuLnu
             services.Configure<AdminConfig>(Configuration.GetSection("AdminConfig"));
             services.Configure<AuthMessageSenderOptions>(this.Configuration);
             services.Configure<CloudinaryConfig>(this.Configuration.GetSection("CloudinaryConfig"));
+            services.Configure<AuthMessageSenderOptions>(Configuration);
+            services.Configure<CloudinaryConfig>(Configuration.GetSection("CloudinaryConfig"));
 
             services.AddDbContext<SuLnuDbContext>(options =>
                 options.UseSqlServer(
@@ -57,7 +59,7 @@ namespace SuLnu
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<IFacultyService, FacultyService>();
-
+            services.AddTransient<IImageService, ImageService>();
 
             services.Configure<IdentityOptions>(options =>
             {

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuLnu.DAL.EF;
 
 namespace SuLnu.DAL.Migrations
 {
     [DbContext(typeof(SuLnuDbContext))]
-    partial class SuLnuDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200824134833_Add CreationDate to News")]
+    partial class AddCreationDatetoNews
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -324,7 +326,7 @@ namespace SuLnu.DAL.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "AMI",
+                            Name = "Applied mathematics and computer science",
                             UniversityId = 1
                         },
                         new
@@ -344,12 +346,6 @@ namespace SuLnu.DAL.Migrations
                             Id = 4,
                             Name = "Mechanics and Mathematics",
                             UniversityId = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "General",
-                            UniversityId = 1
                         });
                 });
 
@@ -367,9 +363,6 @@ namespace SuLnu.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("FacultyId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumberOflikes")
                         .HasColumnType("int");
 
                     b.Property<string>("PhotoFilePath")

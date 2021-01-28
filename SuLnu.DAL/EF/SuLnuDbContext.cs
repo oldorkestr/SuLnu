@@ -26,10 +26,11 @@ namespace SuLnu.DAL.EF
             builder.Entity<Faculty>().HasData(
                 new Faculty[]
                 {
-                       new Faculty {Id=1, Name = "Applied mathematics and computer science", UniversityId=1 },
+                       new Faculty {Id=1, Name = "AMI", UniversityId=1 },
                        new Faculty {Id=2, Name = "Electronics" ,UniversityId=1},
                        new Faculty { Id=3, Name = "Philology",UniversityId=1 },
-                       new Faculty {  Id=4, Name = "Mechanics and Mathematics",UniversityId=1 }
+                       new Faculty {  Id=4, Name = "Mechanics and Mathematics",UniversityId=1 },
+                       new Faculty {Id=5, Name = "General", UniversityId=1 }
                 }
             );
             base.OnModelCreating(builder);

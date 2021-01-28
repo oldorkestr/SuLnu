@@ -23,7 +23,7 @@ namespace SuLnu.DAL.Repositories
             return db.News;
         }
 
-        public News Get(string id)
+        public News Get(int id)
         {
             return db.News.Find(id);
         }

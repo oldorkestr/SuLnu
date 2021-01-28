@@ -23,7 +23,7 @@ namespace SuLnu.DAL.Repositories
             return db.Universities;
         }
 
-        public University Get(string id)
+        public University Get(int id)
         {
             return db.Universities.Find(id);
         }

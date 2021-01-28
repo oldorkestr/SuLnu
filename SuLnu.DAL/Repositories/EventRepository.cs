@@ -23,7 +23,7 @@ namespace SuLnu.DAL.Repositories
             return db.Events;
         }
 
-        public Event Get(string id)
+        public Event Get(int id)
         {
             return db.Events.Find(id);
         }

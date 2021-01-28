@@ -8,13 +8,13 @@ using SuLnu.BLL.DTO;
 
 namespace SuLnu.Models
 {
-    public class NewsViewModel
+    public class NewsShortViewModel
     {
         public string Tilte { get; set; }
-        public string Description { get; set; }
+        public int FacultyId { get; set; }
+        public int NumberOflikes { get; set; }
         public string FacultyName { get; set; }
-        public IFormFile Image { get; set; }
         public DateTime CreationDate { get; set; }
-
+        public string PhotoFilePath { get; set; }
     }
 }

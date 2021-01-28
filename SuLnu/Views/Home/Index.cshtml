@@ -30,7 +30,10 @@
                                     <div class="product__description">
                                         <div class="row mb-3">
                                             <div class="col-12">
-                                                <h2 class="tm-page-title">Welcome to SULNU</h2>
+                                                <h2 class="tm-page-title">
+                                                    Welcome to SULNU
+                                                    Hello @User.Identity.Name
+                                                </h2>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -68,18 +71,17 @@
                                                         <div class="container-login" onclick="onclick">
                                                             <div class="top"></div>
                                                             <div class="bottom"></div>
-                                                                <form asp-action="Login" asp-controller="Login" method="post" enctype="multipart/form-data">
-                                                                    <div class="center">
-
-                                                                        <input asp-for="UserName" class="form-control" placeholder="Email" />
-                                                                        <span asp-validation-for="UserName" class="text-danger"></span>
-                                                                        <input asp-for="Password" class="form-control" placeholder="Password" />
-                                                                        <span asp-validation-for="Password" class="text-danger"></span>
-                                                                        <button type="submit" class="button">Login</button>
-                                                                        @Html.ActionLink("Register", "Register", "Register")
-                                                                    </div>
-                                                                </form>
-                                                                    <h2>&nbsp;</h2>
+                                                            <form asp-action="Login" asp-controller="Login" method="post" enctype="multipart/form-data">
+                                                                <div class="center">
+                                                                    <input asp-for="UserName" class="form-control" placeholder="Email" />
+                                                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                                                    <input asp-for="Password" class="form-control" placeholder="Password" />
+                                                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                                                    <button type="submit" class="button">Login</button>
+                                                                    @Html.ActionLink("Register", "Register", "Register")
+                                                                </div>
+                                                            </form>
+                                                            <h2>&nbsp;</h2>
                                                         </div>
                                                     </div>
                                                 </div>

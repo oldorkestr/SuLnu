@@ -23,7 +23,7 @@ namespace SuLnu.DAL.Repositories
             return db.Documents;
         }
 
-        public Document Get(string id)
+        public Document Get(int id)
         {
             return db.Documents.Find(id);
         }

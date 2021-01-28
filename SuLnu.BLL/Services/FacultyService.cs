@@ -39,5 +39,11 @@ namespace SuLnu.BLL.Services
             var facultyId=_unitOfWork.Faculties.GetAll().Where(f => f.Name == FacultyName).Select(f => f.Id).First();
             return facultyId;
         }
+
+        public string GetFacultyNameById(int facultyId)
+        {
+            var FacultyName = _unitOfWork.Faculties.Get(facultyId).Name;
+            return FacultyName;
+        }
     }
 }
