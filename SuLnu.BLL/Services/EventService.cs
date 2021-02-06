@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AutoMapper;
 using SuLnu.BLL.DTO;
 using SuLnu.BLL.Interfaces;
@@ -31,7 +32,16 @@ namespace SuLnu.BLL.Services
 
         public void CreateEvents(EventDTO eventDto)
         {
-            throw new System.NotImplementedException();
+            if (eventDto != null)
+            {
+                Event @event = _mapper.Map<Event>(eventDto);
+                _unitOfWork.Events.Create(@event);
+                _unitOfWork.Save();
+            }
+            else
+            {
+                throw new ArgumentNullException("questionDTO");
+            }
         }
     }
 }

@@ -60,6 +60,7 @@ namespace SuLnu
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<IFacultyService, FacultyService>();
             services.AddTransient<IImageService, ImageService>();
+            services.AddTransient<IEventService, EventService>();
 
             services.Configure<IdentityOptions>(options =>
             {
