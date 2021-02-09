@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SuLnu.BLL.DTO;
 using SuLnu.BLL.Interfaces;
+using SuLnu.Mappers;
 using SuLnu.Models;
 
 namespace SuLnu.Controllers
@@ -54,18 +55,7 @@ namespace SuLnu.Controllers
                 image = imageSrc;
             }
 
-            var eventDTO = new EventDTO
-            {
-                Name = @event.Name,
-                Description = @event.Description,
-                FormOfHolding = @event.FormOfHolding,
-                Location = @event.Location,
-                ProfilePhotoFilePath = image,
-                EventType = @event.EventType,
-                FacultyId = facultyId
-            };
-
-            _eventService.CreateEvents(eventDTO);
+            _eventService.CreateEvents(EventMapper.Mapper(@event, image, facultyId));
             return RedirectToAction("AllEvents", "Event");
         }
     }
