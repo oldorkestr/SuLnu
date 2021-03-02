@@ -9,9 +9,43 @@
 
 </head>
 <body>
-    <p>
-        <a asp-action="CreateNews">Create News</a>
-    </p>
+    <div class="container-fluid">
+        <div class="row justify-content-start align-items-start">
+            <p>
+                <a id="back" class="fa fa-arrow-circle-left fa-x" href="~/Home/Index">Back</a>
+            </p>
+
+        </div>
+
+        <div class="row justify-content-center align-items-center">
+            <p>
+                <a asp-action="CreateNews" id="create-news">Create News</a>
+            </p>
+
+        </div>
+            
+       
+    </div>
+   
+
+    @using (Html.BeginForm())
+    {
+        <div class="container-fluid">
+
+            <div class="row justify-content-center align-items-center">
+                <p> @Html.DropDownList("filterString", ViewBag.faculties as SelectList, "------------Select filter------------", new { @style = "width: auto; height: 35px; padding: 0; border-radius: 5px; background-color: rgb(44, 12, 88, 0.5);", onchange = "this.form.submit();" })</p>
+            </div>
+
+            <div class="sort">
+                <p>
+                    @Html.ActionLink("Date", "AllNews", new { sortOrder = ViewBag.DateSortParam, currentFilter = ViewBag.CurrentFilter, @style = "" })
+                    @Html.ActionLink("Name", "AllNews", new { sortOrder = ViewBag.NameSortParam, currentFilter = ViewBag.CurrentFilter })
+                </p>
+            </div>
+        </div>      
+        
+
+    }
     <div class="container ">
         <div class="row">
             @{
