@@ -30,7 +30,7 @@ namespace SuLnu.BLL.Infrastructure
                 mc.AddProfile(new UserProfile());
                 mc.AddProfile(new NewsProfile());
                 mc.AddProfile(new FacultyProfile());
-
+                mc.AddProfile(new EventProfile());
             });
 
             var mapper = mappingConfig.CreateMapper();
