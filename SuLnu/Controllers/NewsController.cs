@@ -28,7 +28,7 @@ namespace SuLnu.Controllers
             this._imageService = imageService;
         }
 
-        public IActionResult AllNews(int page=1)
+        public IActionResult AllNews(string? filterString, string? sortOrder, string? currentFilter, int page = 1)
         {
             var AllNewsDTO = _newsService.GetAll();
             var AllNews = _mapper.Map<IEnumerable<NewsShortViewModel>>(AllNewsDTO);
@@ -36,6 +36,50 @@ namespace SuLnu.Controllers
             {
                 news.FacultyName = _facultyService.GetFacultyNameById(news.FacultyId);
             }
+
+            ViewBag.CurrentSort = sortOrder;
+
+            if (filterString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                filterString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = filterString;
+
+            var faculties = new SelectList(_facultyService.GetAllFacultiesNames().ToList().Append("All news"));
+            ViewBag.faculties = faculties;
+
+            if (!String.IsNullOrEmpty(filterString) && filterString!="All news")
+            {
+                AllNews = AllNews.Where(n => n.FacultyName.ToLower().Contains(filterString.ToLower()));
+            }
+
+            ViewBag.NameSortParam = sortOrder == "Name" ? "name_desc" : "Name";
+            ViewBag.DateSortParam = sortOrder == "Date" ? "date_desc" : "Date";
+
+            switch (sortOrder)
+            {
+                case "Name":
+                    AllNews = AllNews.OrderBy(s => s.Tilte);
+                    break;
+                case "name_desc":
+                    AllNews = AllNews.OrderByDescending(s => s.Tilte);
+                    break;
+                case "Date":
+                    AllNews = AllNews.OrderBy(s => s.CreationDate);
+                    break;
+                case "date_desc":
+                    AllNews = AllNews.OrderByDescending(s => s.CreationDate);
+                    break;
+                default:
+                    AllNews = AllNews.OrderBy(s => s.CreationDate);
+                    break;
+            }
+
 
             int maxRows = 6;
             var newsPerPages = AllNews.Skip((page - 1) * maxRows).Take(maxRows);
@@ -50,7 +94,7 @@ namespace SuLnu.Controllers
             return this.View();
         }
 
-        [HttpPost]
+                [HttpPost]
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateNews(NewsViewModel newsInput)
         {

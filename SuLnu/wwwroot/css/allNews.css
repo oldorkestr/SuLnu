@@ -1,7 +1,52 @@
-﻿p, h3 {
+﻿body {
+    background-color: #ffffff;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+p, h3 {
     margin-top: 15px;
     color: black
 }
+
+#back{
+    color: #2c0c58;
+    font-weight: bold;
+    font-size: 21px;
+}
+
+#back:hover {
+    color: #f77803;
+}
+
+#create-news {
+    color: dimgrey;
+}
+
+#create-news:hover {
+    color: black;
+    background-color: #e5e7e9;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+}
+
+.sort a {
+    background-color: rgb(247, 120, 3, 0.5);
+    border-radius: 5px;
+    color: #2c0c58;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+    font-size: 21px;
+}
+
+.sort a:hover {
+    color: #f77803;
+    background-color: rgb(222, 219, 211, 0.5);
+}
+
+
+
 
 h3 {
     font-size: 32px;
@@ -12,9 +57,7 @@ h3 {
     text-align: center
 }
 
-body {
-    background-color: #ffffff;
-}
+
 
 .pagination {
     display: inline-block;
